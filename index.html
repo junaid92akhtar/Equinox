@@ -1433,7 +1433,7 @@
         <!-- Header -->
         <header>
             <a href="#" class="logo">
-                <i class="fas fa-pen-fancy"></i>
+                <span style="font-size: 2rem; font-weight: bold; color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue);">🛒</span>
                 CHS Stationery Hub
             </a>
             <div class="search-container">
@@ -1507,7 +1507,60 @@
         <section class="most-needed" id="most-needed">
             <h2 class="section-title">Most Needed Items</h2>
             <div class="product-grid" id="productGrid">
-                <!-- Products will be dynamically loaded here -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Pen" alt="Pen">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ballpoint Pen</h3>
+                        <p class="product-price">₹</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Pencil" alt="Pencil">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">HB Pencil</h3>
+                        <p class="product-price">₹5</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Eraser" alt="Eraser">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Eraser</h3>
+                        <p class="product-price">₹5</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Sharpener" alt="Sharpener">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sharpener</h3>
+                        <p class="product-price">₹5</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Calculator" alt="Calculator">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Scientific Calculator</h3>
+                        <p class="product-price">₹12</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/200x180?text=Notebook" alt="Notebook">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Spiral Notebook</h3>
+                        <p class="product-price">₹4</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1600,7 +1653,7 @@
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-dollar-sign stat-icon"></i>
-                        <div class="stat-value" id="totalRevenue">$0</div>
+                        <div class="stat-value" id="totalRevenue">₹0</div>
                         <div class="stat-label">Total Revenue</div>
                     </div>
                     <div class="stat-card">
@@ -1673,7 +1726,7 @@
                                 <input type="text" id="productName" required>
                             </div>
                             <div class="form-group">
-                                <label for="productPrice">Price ($)</label>
+                                <label for="productPrice">Price (₹)</label>
                                 <input type="number" id="productPrice" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
@@ -1830,7 +1883,7 @@
             <div class="cart-summary">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span id="cartTotal">$0.00</span>
+                    <span id="cartTotal">₹0.00</span>
                 </div>
                 <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
             </div>
@@ -1887,7 +1940,7 @@
                     </div>
                     <div class="order-summary-total">
                         <span>Total:</span>
-                        <span id="orderTotal">$0.00</span>
+                        <span id="orderTotal">₹0.00</span>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-signup" style="width: 100%; margin-top: 1rem;">Place Order</button>
@@ -2145,6 +2198,7 @@
                     updateAdminDashboard();
                     showNotification('Admin login successful!');
                 } else {
+
                     showNotification('Invalid admin credentials!', 'error');
                 }
             } else {
@@ -2173,6 +2227,7 @@
         adminLogoutBtn.addEventListener('click', () => {
             currentUser = null;
             localStorage.removeItem('currentUser');
+            
             
             // Show main website
             adminDashboard.classList.remove('active');
@@ -2288,7 +2343,7 @@
                         <p>Your cart is empty</p>
                     </div>
                 `;
-                cartTotal.textContent = '$0.00';
+                cartTotal.textContent = '₹0.00';
                 checkoutBtn.disabled = true;
             } else {
                 cartItemsContainer.innerHTML = '';
@@ -2303,7 +2358,7 @@
                         </div>
                         <div class="cart-item-details">
                             <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-price">₹${item.price.toFixed(2)}</div>
                             <div class="cart-item-quantity">
                                 <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
                                 <span class="quantity-value">${item.quantity}</span>
@@ -2319,7 +2374,7 @@
                     total += item.price * item.quantity;
                 });
                 
-                cartTotal.textContent = `$${total.toFixed(2)}`;
+                cartTotal.textContent = `₹${total.toFixed(2)}`;
                 checkoutBtn.disabled = false;
                 
                 // Add event listeners to quantity buttons
@@ -2415,13 +2470,13 @@
                 orderItem.className = 'order-summary-item';
                 orderItem.innerHTML = `
                     <span>${item.name} x ${item.quantity}</span>
-                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>₹${(item.price * item.quantity).toFixed(2)}</span>
                 `;
                 orderSummaryItems.appendChild(orderItem);
                 total += item.price * item.quantity;
             });
             
-            orderTotal.textContent = `$${total.toFixed(2)}`;
+            orderTotal.textContent = `₹${total.toFixed(2)}`;
         });
 
         closeCheckoutModal.addEventListener('click', () => closeModal(checkoutModal));
@@ -2491,7 +2546,7 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
-                        <p class="product-price">$${product.price.toFixed(2)}</p>
+                        <p class="product-price">₹${product.price.toFixed(2)}</p>
                         <div class="product-actions">
                             <button class="add-to-cart" ${!currentUser ? 'disabled' : ''}>Add to Cart</button>
                             <button class="quick-view" ${!currentUser ? 'disabled' : ''}>Quick View</button>
@@ -2558,7 +2613,7 @@
             // Update dashboard stats
             document.getElementById('totalProducts').textContent = totalProducts;
             document.getElementById('totalOrders').textContent = totalOrders;
-            document.getElementById('totalRevenue').textContent = '$' + totalRevenue.toFixed(2);
+            document.getElementById('totalRevenue').textContent = '₹' + totalRevenue.toFixed(2);
             document.getElementById('totalUsers').textContent = totalUsers;
             
             // Update recent activity
@@ -2654,7 +2709,7 @@
                 row.innerHTML = `
                     <td><img src="https://picsum.photos/seed/${product.image}/50/50.jpg" alt="${product.name}" class="product-img-thumb"></td>
                     <td>${product.name}</td>
-                    <td>$${product.price.toFixed(2)}</td>
+                    <td>₹${product.price.toFixed(2)}</td>
                     <td>${product.category}</td>
                     <td>${product.stock}</td>
                     <td>
@@ -2716,7 +2771,7 @@
                 row.innerHTML = `
                     <td>${order.id}</td>
                     <td>${order.customer}</td>
-                    <td>$${order.total.toFixed(2)}</td>
+                    <td>₹${order.total.toFixed(2)}</td>
                     <td>${new Date(order.date).toLocaleDateString()}</td>
                     <td><span class="order-status status-${order.status}">${order.status}</span></td>
                     <td>
